@@ -2,8 +2,8 @@
 view: user_orders {
   derived_table: {
     sql: select
-        row_number() OVER((PARTITION BY u.id ORDER BY u.id) ) as primary_key,
-        u.*, sum(sale_price) as total_price from users u
+        CAST(@rownum := @rownum + 1 AS UNSIGNED) AS prim_key,
+        u.*, sum(sale_price) as total_price from users u, (SELECT @rownum := 0) r
         join orders o on u.id = o.user_id
         join order_items oi on o.id = oi.order_id
       group by o.id
