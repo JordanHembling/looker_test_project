@@ -2,7 +2,7 @@
 view: user_orders {
   derived_table: {
     sql: select
-        row_number() OVER(order by o.id) as primary_key,
+        row_number() OVER((PARTITION BY u.id ORDER BY u.id) ) as primary_key,
         u.*, sum(sale_price) as total_price from users u
         join orders o on u.id = o.user_id
         join order_items oi on o.id = oi.order_id
