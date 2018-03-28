@@ -3,7 +3,7 @@ view: user_orders {
   derived_table: {
     sql:
         select
-        (@position := ifnull(@position, 0) + 1) AS prim_key,
+        CAST(@position := ifnull(@position, 0) + 1) AS prim_key,
         u.*, sum(sale_price) as total_price from users u
         join orders o on u.id = o.user_id
         join order_items oi on o.id = oi.order_id
@@ -20,7 +20,7 @@ view: user_orders {
   dimension: p_key {
     type: number
     primary_key: yes
-    sql:  ${TABLE}.primary_key ;;
+    sql:  ${TABLE}.prim_key ;;
 
   }
 
