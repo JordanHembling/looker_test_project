@@ -75,6 +75,8 @@ explore: user_data {
   }
 }
 
+explore: user_orders {}
+
 explore: users {}
 
 explore: users_nn {}
