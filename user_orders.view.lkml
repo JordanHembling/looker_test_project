@@ -8,7 +8,7 @@ view: user_orders {
         join orders o on u.id = o.user_id
         join order_items oi on o.id = oi.order_id
       group by o.user_id
-      order by email;
+      order by o.user_id;
        ;;
   }
 
