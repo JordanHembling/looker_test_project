@@ -18,6 +18,7 @@ view: user_orders {
   }
 
   dimension: p_key {
+    description: "this is the primary key"
     type: number
     primary_key: yes
     sql:  ${TABLE}.prim_key ;;
