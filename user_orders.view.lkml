@@ -3,7 +3,7 @@ view: user_orders {
   derived_table: {
     sql:
         select
-        row_number() over(order by u.id) as prim_key,
+        (@position := ifnull(@position,0) + 1) as prim_key
         u.*, sum(sale_price) as total_price from users u
         join orders o on u.id = o.user_id
         join order_items oi on o.id = oi.order_id
