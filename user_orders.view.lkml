@@ -7,8 +7,8 @@ view: user_orders {
         u.*, sum(sale_price) as total_price from users u
         join orders o on u.id = o.user_id
         join order_items oi on o.id = oi.order_id
-      group by o.user_id
-      order by o.user_id;
+      group by u.id
+      order by u.id;
        ;;
   }
 
@@ -24,9 +24,9 @@ view: user_orders {
 
   }
 
-  dimension: user_id {
+  dimension: id {
     type: number
-    sql: ${TABLE}.user_id ;;
+    sql: ${TABLE}.id ;;
   }
 
   dimension: email {
@@ -86,7 +86,7 @@ view: user_orders {
 
   set: detail {
     fields: [
-      user_id,
+      id,
       email,
       first_name,
       last_name,
