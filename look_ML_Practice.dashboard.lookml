@@ -18,6 +18,14 @@
     field: users.city
     listens_to_filters: [state]
 
+  - name: age
+    title: "Age"
+    type: number
+    explore: users
+    field: users.age
+    listens_to_filters: [state, city]
+
+
   elements:
     - name: hello_world
       type: looker_column
@@ -27,11 +35,7 @@
       fields: [order_items.total_sales, orders.created_month, products.brand]
       pivots: [products.brand]
       fill_fields: [orders.created_month]
-      filters:
-        products.brand: adidas,Abercrombie & Fitch,Alpine Swiss,Aeropostale,Adi Designs
-        users.age: "<30"
-        users.last_name: ''
-        orders.created_month: 5 months
+
       sorts: [orders.created_month desc, products.brand]
       limit: 500
       stacking: ''
