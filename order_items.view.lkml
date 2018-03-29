@@ -42,4 +42,9 @@ view: order_items {
     type: count
     drill_fields: [id, inventory_items.id, orders.id]
   }
+
+  measure: total_sales {
+    type:  sum
+    sql:  ${sale_price} ;;
+  }
 }
