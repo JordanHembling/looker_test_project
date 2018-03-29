@@ -5,6 +5,19 @@
 
   filters:
 
+  - name: state
+    title: "State"
+    type: field_filter
+    explore: users
+    field: users.state
+
+  - name: city
+    title: "City"
+    type: field_filter
+    explore: users
+    field: users.city
+    listens_to_filters: [state]
+
   elements:
     - name: hello_world
       type: looker_column
