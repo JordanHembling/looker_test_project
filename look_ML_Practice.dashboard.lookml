@@ -18,13 +18,6 @@
     field: users.city
     listens_to_filters: [state]
 
-  - name: age
-    title: "Age"
-    type: number
-    explore: users
-    field: users.age
-    listens_to_filters: [state, city]
-
 
   elements:
     - name: hello_world
@@ -69,3 +62,6 @@
       conditional_formatting_include_totals: false
       conditional_formatting_include_nulls: false
       series_types: {}
+      listen:
+        state: users.state
+        city: users.city
