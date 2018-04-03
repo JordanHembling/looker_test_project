@@ -7,7 +7,7 @@ view: order_facts {
       column: count {}
       derived_column: order_revenue_rank {
         sql: set @curRank := 0
-        @curRank := @curRank + 1 AS rank
+        @curRank := @curRank + 1
         order by total_sales desc;;
       }
     }
