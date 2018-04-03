@@ -11,6 +11,10 @@ datagroup: jordans_project_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+datagroup: order_items {
+  sql_trigger:  select max(created_at) from order_items ;;
+  max_cache_age: "4 hours"
+}
 persist_with: jordans_project_default_datagroup
 
 explore: events {
