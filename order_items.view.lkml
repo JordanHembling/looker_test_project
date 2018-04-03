@@ -48,6 +48,11 @@ view: order_items {
     sql:  ${sale_price} ;;
   }
 
+  measure: average_sale_price {
+    type:  average
+    sql:  ${sale_price} ;;
+  }
+
   measure: count_not_cancelled {
     type: count
     filters: {
@@ -55,4 +60,40 @@ view: order_items {
       value: "NULL"
     }
   }
+
+  parameter: select_measure_type_parameter {
+    label: "Select A Measure"
+    type: string
+    default_value: "Total Revenue"
+    allowed_value: {
+      label: "Total Revenue"
+      value: "Total Revenue"
+    }
+    allowed_value: {
+      label: "Order Count"
+      value: "Order Count"
+    }
+    allowed_value: {
+      label: "Average Sale Price"
+      value: "Average Sale Price"
+    }
+  }
+
+  measure: dynamic_measure {
+    label_from_parameter: select_measure_type_parameter
+    type: number
+    sql: case
+          when {% parameter select_measure_type_parameter %} = 'Total Revenue' then
+               ${total_sales}
+          when {% parameter select_measure_type_parameter %} = 'Order Count' then
+               ${count}
+          when {% parameter select_measure_type_parameter %} = 'Average Sale Price' then
+               ${average_sale_price}
+              end
+          ;;
+    value_format_name: decimal_0
+  }
+
+
+
 }
