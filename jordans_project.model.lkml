@@ -65,6 +65,8 @@ explore: orders {
 
 explore: products {}
 
+explore: user_information {}
+
 explore: schema_migrations {}
 
 explore: user_data {
