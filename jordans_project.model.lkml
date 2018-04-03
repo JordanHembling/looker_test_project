@@ -85,4 +85,6 @@ explore: user_orders {}
 
 explore: users {}
 
+explore: order_facts {}
+
 explore: users_nn {}
