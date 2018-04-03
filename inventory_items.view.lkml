@@ -53,6 +53,7 @@ view: inventory_items {
 
   measure: total_count {
     type:  sum
+    sql: ${TABLE}.count ;;
     drill_fields: [id, products.item_name, products.id, order_items.count]
   }
 }
