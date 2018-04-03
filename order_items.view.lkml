@@ -47,4 +47,12 @@ view: order_items {
     type:  sum
     sql:  ${sale_price} ;;
   }
+
+  measure: count_not_cancelled {
+    type: count
+    filters: {
+      field: returned_date
+      value: "NULL"
+    }
+  }
 }
