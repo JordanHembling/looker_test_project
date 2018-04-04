@@ -1,6 +1,6 @@
 view: user_information {
   derived_table: {
-    indexes: ["u.id"]
+    indexes: ["id"]
     datagroup_trigger: order_items
 
 
