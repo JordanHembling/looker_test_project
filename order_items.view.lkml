@@ -57,9 +57,9 @@ view: order_items {
     type: number
     sql: round((${total_sales}-${total_cost})/${total_sales},2) ;;
     value_format: "0.00%"
-    html: {% if value > 0.60 %}
+    html: {% if value >= 0.60 %}
     <b><p style="color: white; background-color: blue; margin: 0; text-align:center">{{ value }}</p></b>
-    {% elsif value < 0.55 %}
+    {% elsif value > 0.55 %}
     <b><p style="color: white; background-color: orange; margin: 0; text-align:center">{{ value }}</p></b>
     {% else %}
     <b><p style="color: black; background-color: white; margin: 0; text-align:center">{{ value }}</p></b>
