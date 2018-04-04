@@ -78,6 +78,11 @@ explore: user_advanced {
       relationship:  one_to_one
       sql_on:  ${user_information.user_id} = ${users.user_id} ;;
     }
+  join: user_data {
+    type: inner
+    relationship: one_to_one
+    sql_on:  ${users.user_id} = ${user_data.id} ;;
+  }
 }
 
 explore: schema_migrations {}
