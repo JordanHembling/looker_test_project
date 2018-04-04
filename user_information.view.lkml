@@ -4,7 +4,7 @@ view: user_information {
     datagroup_trigger: order_items
 
 
-    sql: select u.id as user_id, concat(u.first_name, " ",u.last_name) as full_name, email, gender, state, zip, count(o.id) as order_count, sum(oi.sale_price) as total_revenue, min(o.created_at) as First_order_date, max(o.created_at) as Last_order_date from users u
+    sql: select u.id as user_id, concat(u.first_name, " ",u.last_name) as full_name, count(o.id) as order_count, sum(oi.sale_price) as total_revenue, min(o.created_at) as First_order_date, max(o.created_at) as Last_order_date from users u
         join orders o on u.id = o.user_id
         join order_items oi on o.id = oi.order_id
       group by u.id
@@ -72,10 +72,6 @@ view: user_information {
     fields: [
       user_id,
       full_name,
-      email,
-      gender,
-      state,
-      zip,
       order_count,
       total_revenue,
       first_order_date_time,
