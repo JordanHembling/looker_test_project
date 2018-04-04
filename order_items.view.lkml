@@ -55,7 +55,7 @@ view: order_items {
 
   measure: profit_margin {
     type: number
-    sql: (${total_sales}-${total_cost})/${total_sales} ;;
+    sql: round((${total_sales}-${total_cost})/${total_sales},2) ;;
   }
 
   measure: average_sale_price {
