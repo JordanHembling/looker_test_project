@@ -55,10 +55,11 @@ view: order_items {
 
   measure: profit_margin {
     type: number
+    value_format: "0.00%"
     sql: round((${total_sales}-${total_cost})/${total_sales},2) ;;
-    html: {% if value > .6 %}
+    html: {% if value > 60 %}
     <b><p style="color: white; background-color: blue; margin: 0; text-align:center">{{ value }}</p></b>
-    {% elsif value < .55 %}
+    {% elsif value < 55 %}
     <b><p style="color: white; background-color: orange; margin: 0; text-align:center">{{ value }}</p></b>
     {% else %}
     <b><p style="color: black; background-color: white; margin: 0; text-align:center">{{ value }}</p></b>
