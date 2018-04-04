@@ -69,7 +69,16 @@ explore: orders {
 
 explore: products {}
 
-explore: user_information {}
+explore: user_advanced {
+  extends: [users]
+  from:  user_information
+  view_name:  users
+    join: user_information {
+      type: left_outer
+      relationship:  one_to_one
+      sql_on:  ${user_information.user_id} = ${users.user_id} ;;
+    }
+}
 
 explore: schema_migrations {}
 
